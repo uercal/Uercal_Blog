@@ -26,12 +26,27 @@ class AllController extends Controller
         $username = ucfirst($username);
 
         $data = RedisinfosModel::getAllBlogsInfos();
-        
         return view('main.all',['data'=>$data]);        
 
     }
 
+    public function author($uid){        
+        $isExist = RedisinfosModel::getUsername($uid);
+        if($isExist){
 
+            $username = $isExist;
+            $username = ucfirst($username);
+
+            $items = Redis::lrange("uid:$uid",0,-1);
+
+            $data = RedisinfosModel::getData($items); 
+    
+            return view('main.welcome_author',['data'=>$data,'name'=>$username]);
+
+        }else{
+            return view('errors.503');
+        }
+    }
 
 
 

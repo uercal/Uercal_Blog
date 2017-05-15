@@ -42,7 +42,7 @@ label{
 </style>
 <body>      
     <div class="container">
-        <h1 style="width:400px;">{{$name}}'s Blogs</h1>
+        <h1 style="width:auto;">{{$name}}'s Blogs</h1>
         <img class="menu" src="{{asset('/public/images/logout.png')}}" onclick="logout()">
         <img class="menu" src="{{asset('/public/images/all.png')}}" onclick="seeAll()">             
         <hr>

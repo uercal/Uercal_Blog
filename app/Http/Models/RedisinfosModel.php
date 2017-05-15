@@ -38,10 +38,10 @@ class RedisinfosModel extends Model
         $model = \App\Http\Models\UsersModel::find($uid);
         if($model){
             return $model['username'];
+        }else{
+            return null;
         }
     }
-
-
 
 
     //CommentS:
@@ -82,11 +82,14 @@ class RedisinfosModel extends Model
     public static function getAllBlogsInfos(){
         $blogsIndex = Redis::keys('?:item:?');
 
-        foreach ($blogsIndex as $key => $value) {
+        foreach ($blogsIndex as $key => $value) {            
             $data[$key] = Redis::hgetall($value);
             $data[$key]['itemid'] = $value;
+            $data[$key]['username'] = self::getUsername($value);
             $data[$key]['content'] = mb_substr(strip_tags($data[$key]['content']),0,10,'utf-8').'.......';
         }
         return $data;
     }
+
+    
 }

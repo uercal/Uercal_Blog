@@ -69,8 +69,10 @@ Route::group(['middleware' => ['web','before.login'],'namespace'=>'Main'], funct
     
 
 
-    //查看所有blogs
+    //查看所有blogs    
     Route::get('/allBlogs','AllController@index');
+    Route::get('/allBlogs/{id}','AllController@author');
+    
 
     
 });

@@ -8,3 +8,11 @@ commit3:
 	update all_author FULL-stack Redis for database , laravel 5.2 + sweetalert + layui.editor + bootstrap  
 
 it's just a habits demo 4 practice
+
+
+1.
+	copy .env.example 2 .env
+
+2.
+	composer install
+
